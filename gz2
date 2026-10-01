@@ -1,0 +1,24 @@
+#!name=瓜子影视去广告1111
+#!desc=瓜子影视广告接口过滤
+
+[MITM]
+hostname = %APPEND% api.mxtxqe.com, api.sef5w7.com, sdapi.u4gdp3.com, sdapi.4zu76s.com, sdapi.re3k7n.com, api.xqe4cxu.com, api.syq8gvw.com, api.zjypp7x.com, sdapi.6ne6zmh.com, sdapi.g4k74qn.com, sdapi.tymnpk4.com, sdapi.use3p2m.com, api.7gmsut2m.com, api.tkfupxqu.com, api.5h5hbfhh.com, api.qchyzkww.com, api.cjxxpgkq.com, api.rqqakayn.com, api.tezpgdzn.com, api.bmjb2mk7.com, api.46d5umpk.com, newapi.kanshipinaxsdf.com, hyperf.718fd9f.com, oldapi.0673ddc.com
+
+[Body Rewrite]
+
+
+# 通用广告接口
+http-response-jq ^https:\/\/(?:api|sdapi|newapi|hyperf|oldapi)\.[a-z0-9]+\.com\/App\/Ad\/(?:activityInfo|bannerInfo|bardCacheAdInfo|barsIndexAdInfo|barsPlayAdInfo|barsUserAdInfo|comicAdInfo|liveEventAdInfo|noticeInfo|novelAdInfo|novelReaderAdInfo|playAdInfo|playGuidePopup|skitAdInfo|splashInfo|sportAdInfo|vajraInfo)$ '.msg = "" | .message = "" | .data = null'
+
+# trafficNavigationInfo / vajraList
+#http-response-jq ^https:\/\/(?:api|sdapi|newapi|hyperf|oldapi)\.[a-z0-9]+\.com\/App\/ad\/(?:trafficNavigationInfo|vajraList)$ '.msg = "" | .message = "" | .data = null'
+
+# 首页浮动广告
+http-response-jq ^https:\/\/(?:api|sdapi|newapi|hyperf|oldapi)\.[a-z0-9]+\.com\/App\/IndexList\/homeFloatAd$ '.msg = "" | .message = "" | .data = null'
+
+# 评论区广告
+http-response-jq ^https:\/\/(?:api|sdapi|newapi|hyperf|oldapi)\.[a-z0-9]+\.com\/App\/Resource\/CommentAd\/show$ '.msg = "" | .message = "" | .data = null'
+
+# 视频点播广告
+http-response-jq ^https:\/\/(?:api|sdapi|newapi|hyperf|oldapi)\.[a-z0-9]+\.com\/App\/IndexPlay\/vodAdvertisement$ '.msg = "" | .message = "" | .data = null'
+
